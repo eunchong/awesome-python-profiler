@@ -4,6 +4,8 @@ from random import sample
 import copy
 from collections import OrderedDict
 
+import timeit
+
 SAMPLE_SIZE = {
     'micro' :5,
     'small' :100,       # 10**2
@@ -37,11 +39,13 @@ def main():
 
     # quick sort benchmark
     print("- quick sort benchmark ...")
-    quick_sort_bench()
+    result = timeit.timeit(quick_sort_bench, number=1)
+    print(result)
 
     # merge sort benchmark
     print("- merge sort benchmark ...")
-    merge_sort_bench()
+    result = timeit.timeit(merge_sort_bench, number=1)
+    print(result)
 
 #############
 # benchmark #
