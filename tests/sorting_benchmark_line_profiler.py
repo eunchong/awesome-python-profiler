@@ -18,6 +18,7 @@ SAMPLE_DATA = OrderedDict()
 # main #
 ########
 
+@profile
 def main():
 
     sample_limit = 'xlarge'
@@ -47,6 +48,7 @@ def main():
 # benchmark #
 #############
 
+@profile
 def quick_sort_bench():
 
     sample_data = copy.deepcopy(SAMPLE_DATA)
@@ -55,6 +57,7 @@ def quick_sort_bench():
         print(" > %s - quick sort"%(k))
         sort(SAMPLE_DATA[k], sort_type='quick')
 
+@profile
 def merge_sort_bench():
 
     sample_data = copy.deepcopy(SAMPLE_DATA)
@@ -67,6 +70,7 @@ def merge_sort_bench():
 # sorting algorithm #
 #####################
 
+@profile
 def sort(data, sort_type):
 
     if sort_type == "quick":
@@ -76,6 +80,7 @@ def sort(data, sort_type):
     else:
         raise NotImplementedError()
 
+@profile
 def quick_sort(arr):
 
     if len(arr) <= 1:
@@ -91,6 +96,7 @@ def quick_sort(arr):
             equal_arr.append(num)
     return quick_sort(lesser_arr) + equal_arr + quick_sort(greater_arr)
 
+@profile
 def merge_sort(arr):
 
     if len(arr) < 2:
