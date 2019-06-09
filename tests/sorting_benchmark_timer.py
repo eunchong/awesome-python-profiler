@@ -4,6 +4,25 @@ from random import sample
 import copy
 from collections import OrderedDict
 
+from time import time
+from functools import wraps
+
+###################
+# timer decorator #
+###################
+
+def timefn(fn):
+    """Simple timer decorator."""
+    @wraps(fn)
+    def measure_time(*args, **kwargs):
+        t1 = time()
+        result = fn(*args, **kwargs)
+        t2 = time()
+        print(f"@timefn: {fn.__name__} \
+            took {str(t2 - t1)} seconds")
+        return result
+    return measure_time
+
 SAMPLE_SIZE = {
     'micro' :5,
     'small' :100,       # 10**2
@@ -18,6 +37,7 @@ SAMPLE_DATA = OrderedDict()
 # main #
 ########
 
+@timefn
 def main():
 
     sample_limit = 'xlarge'
@@ -47,6 +67,7 @@ def main():
 # benchmark #
 #############
 
+@timefn
 def quick_sort_bench():
 
     sample_data = copy.deepcopy(SAMPLE_DATA)
@@ -55,6 +76,7 @@ def quick_sort_bench():
         print(" > %s - quick sort"%(k))
         sort(SAMPLE_DATA[k], sort_type='quick')
 
+@timefn
 def merge_sort_bench():
 
     sample_data = copy.deepcopy(SAMPLE_DATA)
@@ -67,6 +89,7 @@ def merge_sort_bench():
 # sorting algorithm #
 #####################
 
+@timefn
 def sort(data, sort_type):
 
     if sort_type == "quick":
