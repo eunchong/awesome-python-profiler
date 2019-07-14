@@ -2,7 +2,7 @@
 
 ## CPU Profiler
 
-![image](https://user-images.githubusercontent.com/2150106/59161939-df6ba200-8b23-11e9-9e80-c8cf1d86803b.png)
+![image](https://user-images.githubusercontent.com/2150106/61186865-44776200-a6a5-11e9-9017-85b5848ac8f0.png)
 
 - timer (decorator)
 - timeit
